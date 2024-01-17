@@ -1,14 +1,21 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { Suspense, useState, useEffect } from "react";
 import "./App.css";
 import {
   Environment,
   OrbitControls,
   PerspectiveCamera,
 } from "@react-three/drei";
+import Scene from "./Scene.jsx";
+import { useThree } from "@react-three/fiber";
 
 function App() {
+  const state = useThree();
+
+  useEffect(() => {
+    // scene tone mapping
+    state.gl.toneMappingExposure = 5;
+  }, [state.gl]);
+
   return (
     <>
       <Environment
@@ -26,6 +33,10 @@ function App() {
         target={[0.304, 0.806, 0.427]}
         maxPolarAngle={Math.PI / 0.45}
       />
+
+      <Suspense fallback={null}>
+        <Scene />
+      </Suspense>
     </>
   );
 }
