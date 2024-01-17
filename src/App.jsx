@@ -7,6 +7,7 @@ import {
 } from "@react-three/drei";
 import Scene from "./Scene.jsx";
 import { useThree } from "@react-three/fiber";
+import Meteor from "./Meteor.jsx";
 
 function App() {
   const state = useThree();
@@ -36,6 +37,7 @@ function App() {
 
       <Suspense fallback={null}>
         <Scene />
+        <Meteor />
       </Suspense>
     </>
   );
