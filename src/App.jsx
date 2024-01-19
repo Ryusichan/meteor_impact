@@ -8,6 +8,7 @@ import {
 import Scene from "./Scene.jsx";
 import { useThree } from "@react-three/fiber";
 import Meteor from "./Meteor.jsx";
+import { NodeToyTick } from "@nodetoy/react-nodetoy";
 
 function App() {
   const state = useThree();
@@ -34,6 +35,8 @@ function App() {
         target={[0.304, 0.806, 0.427]}
         maxPolarAngle={Math.PI / 0.45}
       />
+
+      <NodeToyTick />
 
       <Suspense fallback={null}>
         <Scene />
